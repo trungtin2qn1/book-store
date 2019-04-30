@@ -30,6 +30,5 @@ func SignUp(c *gin.Context) {
 		return
 	}
 
-	customer.Password = ""
 	c.JSON(200, customer)
 }

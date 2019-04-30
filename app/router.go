@@ -20,11 +20,13 @@ func SetupRouter() *gin.Engine {
 
 	router.Use(cors.New(config))
 
-	router.POST("/api/sign_up", Authentication.SignUp)
+	api := router.Group("/api")
 
-	auth := router.Group("/auth")
+	api.POST("/sign_up", Authentication.SignUp)
+
+	auth := api.Group("/auth")
 	{
-		auth.GET("/:user_id", customer.GetCustomerByID)
+		auth.GET("/customer/:customer_id", customer.GetCustomerByID)
 	}
 
 	router.NoRoute(func(c *gin.Context) {
