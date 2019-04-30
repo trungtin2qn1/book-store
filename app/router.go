@@ -3,6 +3,7 @@ package app
 import (
 	"book-store/controller/Authentication"
 	"book-store/controller/SetUp"
+	"book-store/controller/customer"
 	"book-store/database"
 	"log"
 

@@ -6,5 +6,6 @@ import (
 
 //GetCustomerByID ...
 func GetCustomerByID(c *gin.Context) {
+	//userID := c.Param("user_id")
 
 }
