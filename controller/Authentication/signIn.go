@@ -11,8 +11,8 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-//SignUp ...
-func SignUp(c *gin.Context) {
+//SignIn ...
+func SignIn(c *gin.Context) {
 	var authReq model.Authentication
 	err := c.ShouldBind(&authReq)
 	if err != nil {
@@ -22,7 +22,7 @@ func SignUp(c *gin.Context) {
 		return
 	}
 
-	customer, err := Authentication.SignUp(authReq.Email, authReq.Password)
+	customer, err := Authentication.SignIn(authReq.Email, authReq.Password)
 
 	if err != nil {
 		c.JSON(SetUp.ErrorMap[fmt.Sprintf("%s", err)], gin.H{
@@ -31,7 +31,7 @@ func SignUp(c *gin.Context) {
 		return
 	}
 
-	token, err := Jwt.IssueToken(string(customer.ID), customer.Email)
+	token, err := Jwt.IssueToken(customer.ID.Hex(), customer.Email)
 	customer.Token = token
 	c.JSON(200, customer)
 }

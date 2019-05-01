@@ -9,4 +9,5 @@ type Customer struct {
 	Password  string        `json:"-" form:"-" bson:"password,omitempty"`
 	FirstName string        `json:"first_name,omitempty" form:"first_name,omitempty"`
 	LastName  string        `json:"last_name,omitempty" form:"last_name,omitempty"`
+	Token     string        `json:"token,omitempty" form:"token,omitempty"`
 }

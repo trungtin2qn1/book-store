@@ -5,4 +5,7 @@ db.createUser(
     roles: ["readWrite", "dbAdmin"]
   }
 );
-db.createCollection("test");
+
+db.createCollection("customers");
+db.createCollection("books");
+db.createCollection("orders");

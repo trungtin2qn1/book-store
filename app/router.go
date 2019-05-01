@@ -5,6 +5,7 @@ import (
 	"book-store/controller/SetUp"
 	"book-store/controller/customer"
 	"book-store/database"
+	"book-store/model/Jwt"
 	"log"
 
 	"github.com/gin-contrib/cors"
@@ -23,10 +24,12 @@ func SetupRouter() *gin.Engine {
 	api := router.Group("/api")
 
 	api.POST("/sign_up", Authentication.SignUp)
+	api.POST("/sign_in", Authentication.SignIn)
 
 	auth := api.Group("/auth")
 	{
-		auth.GET("/customer/:customer_id", customer.GetCustomerByID)
+		auth.Use(Jwt.VerifyJWToken)
+		auth.GET("/customer", customer.GetCustomerByID)
 	}
 
 	router.NoRoute(func(c *gin.Context) {

@@ -2,12 +2,9 @@ package database
 
 import (
 	"book-store/utils"
-	"fmt"
-	"log"
 	"time"
 
 	"gopkg.in/mgo.v2"
-	"gopkg.in/mgo.v2/bson"
 )
 
 var db *mgo.Database
@@ -27,8 +24,6 @@ func InitMongo() {
 		Password: utils.GetEnv("MONGO_PASSWORD", "bs_1234"),
 	}
 
-	fmt.Println(info)
-
 	session, err := mgo.DialWithInfo(info)
 	if err != nil {
 		panic(err)
@@ -42,14 +37,4 @@ func InitMongo() {
 //GetMongoDB ...
 func GetMongoDB() *mgo.Database {
 	return db
-}
-
-//Get ...
-func Get() {
-	customers := []Customer{}
-	err := db.C("test").Find(bson.M{}).All(&customers)
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Println(customers)
 }
