@@ -32,10 +32,10 @@ func SignUp(email string, password string) (database.Customer, error) {
 	customer.Email = email
 
 	database.GetMongoDB().C(database.COL_CUSTOMERS).Find(bson.M{}).One(&customer)
-	if customer.ID != "" {
-		err = fmt.Errorf("%s", "You have registered")
-		return customer, err
-	}
+	// if customer.ID.Hex() != temp.ID.Hex() {
+	// 	err = fmt.Errorf("%s", "You have registered")
+	// 	return customer, err
+	// }
 
 	customer.Password, err = utils.Generate(password)
 	if err != nil {
@@ -50,6 +50,6 @@ func SignUp(email string, password string) (database.Customer, error) {
 
 //AuthReq ...
 type AuthReq struct {
-	Email    string `json:"email,omitempty" form:"email,omitempty"`
-	Password string `json:"password,omitempty" form:"password,omiempty"`
+	Email    string `json:"email,omitempty"`
+	Password string `json:"password,omitempty"`
 }

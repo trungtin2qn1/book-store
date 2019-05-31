@@ -4,7 +4,6 @@ import (
 	"book-store/controller/SetUp"
 	"book-store/model/Authentication"
 	"book-store/model/Jwt"
-	"donz-app-backend/model"
 	"fmt"
 	"net/http"
 
@@ -13,9 +12,11 @@ import (
 
 //SignIn ...
 func SignIn(c *gin.Context) {
-	var authReq model.Authentication
-	err := c.ShouldBind(&authReq)
+	authReq := Authentication.AuthReq{}
+	//err := c.ShouldBind(&authReq)
+	err := c.ShouldBindJSON(&authReq)
 	if err != nil {
+		fmt.Println(err)
 		c.JSON(http.StatusBadRequest, gin.H{
 			"message": "Data or data type is invalid",
 		})

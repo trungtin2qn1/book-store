@@ -18,11 +18,6 @@ func SignIn(email string, password string) (database.Customer, error) {
 	}
 	database.GetMongoDB().C(database.COL_CUSTOMERS).Find(bson.M{"email": email}).One(&customer)
 
-	if customer.ID == "" {
-		err = fmt.Errorf("%s", "You have not registered yet")
-		return customer, err
-	}
-
 	check, err := utils.Compare(customer.Password, password)
 
 	if err != nil {

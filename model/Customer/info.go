@@ -1,4 +1,4 @@
-package customer
+package Customer
 
 import (
 	"book-store/database"
