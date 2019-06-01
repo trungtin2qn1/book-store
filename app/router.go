@@ -13,6 +13,7 @@ import (
 	"log"
 
 	"github.com/gin-contrib/cors"
+	"github.com/gin-contrib/static"
 	"github.com/gin-gonic/gin"
 )
 
@@ -24,6 +25,7 @@ func SetupRouter() *gin.Engine {
 	config.AllowAllOrigins = true
 
 	router.Use(cors.New(config))
+	router.Use(static.Serve("/", static.LocalFile("./client", true)))
 
 	api := router.Group("/api")
 
