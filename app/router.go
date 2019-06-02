@@ -37,6 +37,7 @@ func SetupRouter() *gin.Engine {
 		customer := auth.Group("/customer")
 		{
 			customer.GET("/:customer_id", Customer.GetCustomerByID)
+			customer.PUT("/:customer_id", Customer.UpdateCustomerInfo)
 			customer.GET("/:customer_id/book/:book_id/comments", Comment.GetCommentsByBookID)
 			customer.GET("/:customer_id/books", Book.GetAllBooks)
 			customer.GET("/:customer_id/book/:book_id", Book.GetBookInfoByID)

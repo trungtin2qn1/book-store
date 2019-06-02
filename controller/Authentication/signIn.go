@@ -3,7 +3,6 @@ package Authentication
 import (
 	"book-store/controller/SetUp"
 	"book-store/model/Authentication"
-	"book-store/model/Jwt"
 	"fmt"
 	"net/http"
 
@@ -32,7 +31,7 @@ func SignIn(c *gin.Context) {
 		return
 	}
 
-	token, err := Jwt.IssueToken(customer.ID.Hex(), customer.Email)
-	customer.Token = token
+	//token, err := Jwt.IssueToken(customer.ID.Hex(), customer.Email)
+	//customer.Token = token
 	c.JSON(200, customer)
 }

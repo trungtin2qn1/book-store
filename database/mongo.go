@@ -11,6 +11,7 @@ var db *mgo.Database
 
 const (
 	COL_CUSTOMERS = "customers"
+	COL_BOOKS     = "books"
 )
 
 //InitMongo ...
