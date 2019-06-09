@@ -1,6 +1,10 @@
 package database
 
-import "gopkg.in/mgo.v2/bson"
+import (
+	"fmt"
+
+	"gopkg.in/mgo.v2/bson"
+)
 
 //Books ...
 type Book struct {
@@ -18,16 +22,39 @@ type Book struct {
 	Comments      []Comment     `json:"comments,omitempty"`
 }
 
-// //CreateCart ...
-// func CreateCart(bookID bson.ObjectId) (Cart, error) {
-// 	cart := Cart{}
-// 	var err error
-// 	return cart, err
-// }
+//CreateBook ...
+func CreateBook(
+	title, description, organization string,
+	inventory, fromTime, toTime, price, discountPrice uint64,
+	categoryName string, images []string, comments []Comment) (Book, error) {
+	book := Book{
+		Title:         title,
+		Description:   description,
+		Organization:  organization,
+		Inventory:     inventory,
+		FromTime:      fromTime,
+		ToTime:        toTime,
+		Price:         price,
+		DiscountPrice: discountPrice,
+	}
+	var err error
+
+	book.ID = bson.NewObjectId()
+	err = db.C(COL_BOOKS).Insert(&book)
+	if err != nil {
+		return Book{}, err
+	}
+	return book, err
+}
 
 //Update ...
 func (book *Book) Update(newBook Book) error {
-	return nil
+	err := db.C(COL_BOOKS).Update(bson.M{"_id": book.ID}, newBook)
+	if err != nil {
+		fmt.Println(1)
+		fmt.Println(err)
+	}
+	return err
 }
 
 func (book *Book) Delete() error {

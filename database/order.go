@@ -12,10 +12,3 @@ type Order struct {
 	BookIDs     []bson.ObjectId `json:"book_id,omitempty" bson:"_book_id,omitempty"`
 	Payment     Payment         `json:"payment,omitempty"`
 }
-
-// //CreateCart ...
-// func CreateCart(bookID bson.ObjectId) (Cart, error) {
-// 	cart := Cart{}
-// 	var err error
-// 	return cart, err
-// }

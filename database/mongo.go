@@ -10,8 +10,14 @@ import (
 var db *mgo.Database
 
 const (
-	COL_CUSTOMERS = "customers"
-	COL_BOOKS     = "books"
+	COL_CUSTOMERS     = "customers"
+	COL_BOOKS         = "books"
+	COL_CARTS         = "carts"
+	COL_ORDERS        = "orders"
+	COL_COMMENT       = "comments"
+	COL_PAYMENT       = "payments"
+	COL_SHIPPING_INFO = "shipping_infos"
+	COL_STAFF         = "staffs"
 )
 
 //InitMongo ...

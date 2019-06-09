@@ -84,3 +84,8 @@ func MaxInt64(v1, v2 int64) int64 {
 		return v2
 	}
 }
+
+//Remove ...
+func Remove(slice []interface{}, s int) []interface{} {
+	return append(slice[:s], slice[s+1:]...)
+}
