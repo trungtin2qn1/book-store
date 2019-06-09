@@ -49,3 +49,8 @@ func CreateCustomer(email string, password string) (Customer, error) {
 	}
 	return customer, err
 }
+
+//Remove ...
+func (customer *Customer) RemoveCart(s int) {
+	customer.Carts = append(customer.Carts[:s], customer.Carts[s+1:]...)
+}

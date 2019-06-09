@@ -46,13 +46,9 @@ func SetupRouter() *gin.Engine {
 			customer.PUT("/:customer_id/cart/:cart_id", Cart.UpdateCart)
 			customer.GET("/:customer_id/carts", Cart.GetAllCartsInfo)
 			customer.POST("/:customer_id/order", Order.CreateOrder)
+			customer.DELETE("/:customer_id/cart/:cart_id", Cart.DeleteCart)
+			customer.POST("/:customer_id/order", Order.CreateOrder)
 
-			//auth.POST("/:customer_id/payment", Payment.AddPayment)
-			//auth.DELETE("/:customer_id/payment", Payment.RemovePayment)
-
-			//auth.POST("/:customer_id/shipping_info", ShippingInfo.CreateShippingInfo)
-			//auth.PUT("/:customer_id/shipping_info", ShippingInfo.UpdateShippingInfo)
-			//auth.DELETE("/:customer_id/shipping_info", ShippingInfo.DeleteShippingInfo)
 		}
 		staff := auth.Group("/staff")
 		{
