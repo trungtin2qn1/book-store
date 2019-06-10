@@ -88,8 +88,8 @@
                                 <th style="width:10%"></th>
                             </tr>
                         </thead>
-                        <tbody>
-                          <tr>
+                        <tbody class="cart-items">
+                          <tr class="cart-row">
                             <td data-th="Product">
                                 <div class="row">
                                     <div class="col-sm-2 hidden-xs">
@@ -101,9 +101,9 @@
                                     </div>
                                 </div>
                             </td>
-                            <td data-th="Price">$1.99</td>
-                            <td data-th="Quantity">
-                              <input type="number" class="form-control text-center" value="1">
+                            <td class="cart-price" data-th="Price">$1.99</td>
+                            <td  data-th="Quantity">
+                              <input type="number" class="cart-quantity" value="1">
                           </td>
                           <td data-th="Subtotal" class="text-center">1.99</td>
                           <td class="actions" data-th="">
@@ -111,8 +111,8 @@
                               <button class="btn gray-btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
                           </td>
                         </tr>
-                        <tr>
-                            <td data-th="Product">
+                        <tr class="cart-row">
+                            <td class="cart-item" data-th="Product">
                                 <div class="row">
                                     <div class="col-sm-2 hidden-xs">
                                         <img src="images/img4.jpg" alt="7-Day" class="img-responsive" />
@@ -123,9 +123,9 @@
                                     </div>
                                 </div>
                             </td>
-                            <td data-th="Price">$2.99</td>
+                            <td class="cart-price" data-th="Price">$2.99</td>
                             <td data-th="Quantity">
-                              <input type="number" class="form-control text-center" value="1">
+                              <input type="number" class="cart-quantity" value="1">
                           </td>
                           <td data-th="Subtotal" class="text-center">2.99</td>
                           <td class="actions" data-th="">
@@ -138,7 +138,7 @@
                     <tr>
                         <td><a href="index.html" class="btn btn-warning btn-block"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
                         <td colspan="2" class="hidden-xs"></td>
-                        <td class="hidden-xs text-center"><strong>Total $4.98</strong></td>
+                        <td class="hidden-xs text-center">Total: <strong class="cart-total-price"> $4.98</strong></td>
                         <td><a href="checkout.html" class="btn blue-btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
                     </tr>
                 </tfoot>
@@ -232,6 +232,7 @@
     <script src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/owl.carousel.min.js"></script>
     <script src="js/custom.js"></script>
+    <script src="js/checkout.js"></script>
 </body>
 
 </html>
