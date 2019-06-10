@@ -25,7 +25,7 @@ func SetupRouter() *gin.Engine {
 	config.AllowAllOrigins = true
 
 	router.Use(cors.New(config))
-	router.Use(static.Serve("/", static.LocalFile("./client", true)))
+	router.Use(static.Serve("/", static.LocalFile("./views", true)))
 
 	api := router.Group("/api")
 
