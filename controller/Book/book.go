@@ -3,6 +3,7 @@ package Book
 import (
 	"book-store/database"
 	"book-store/model/Book"
+	"fmt"
 
 	"github.com/gin-gonic/gin"
 )
@@ -30,6 +31,8 @@ func CreateBook(c *gin.Context) {
 		})
 		return
 	}
+	fmt.Println("Book:", book)
+	fmt.Println("Book[images]", book.Images)
 	res, err := Book.CreateBook(&book)
 	if err != nil {
 		c.JSON(406, gin.H{

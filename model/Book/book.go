@@ -14,6 +14,7 @@ func CreateBook(book *database.Book) (database.Book, error) {
 		book.Title,
 		book.Description,
 		book.Organization,
+		book.Author,
 		book.Inventory,
 		book.FromTime,
 		book.ToTime,

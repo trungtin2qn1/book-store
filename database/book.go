@@ -12,6 +12,7 @@ type Book struct {
 	Title         string        `json:"title,omitempty"`
 	Description   string        `json:"description,omitempty"`
 	Organization  string        `json:"organization,omitempty"`
+	Author        string        `json:"author,omitempty"`
 	Inventory     uint64        `json:"inventory,omitempty"`
 	FromTime      uint64        `json:"from_time,omitempty"`
 	ToTime        uint64        `json:"to_time,omitempty"`
@@ -24,7 +25,7 @@ type Book struct {
 
 //CreateBook ...
 func CreateBook(
-	title, description, organization string,
+	title, description, organization, author string,
 	inventory, fromTime, toTime, price, discountPrice uint64,
 	categoryName string, images []string, comments []Comment) (Book, error) {
 	book := Book{
@@ -36,6 +37,9 @@ func CreateBook(
 		ToTime:        toTime,
 		Price:         price,
 		DiscountPrice: discountPrice,
+		Author:        author,
+		Images:        images,
+		Comments:      comments,
 	}
 	var err error
 
