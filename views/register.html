@@ -79,11 +79,11 @@
                 <form>
                     <div class="row">
                         <div class="col-md-4">
-                            <input type="text" id="txtEmail" autofocus placeholder="Enter Your Email" required>
+                            <input type="text" id="txtEmail" name="email" autofocus placeholder="Enter Your Email" required>
                             <span class="required-star">*</span>
                         </div>
                         <div class="col-md-4">
-                            <input type="password" id="txtPassword" name="txtPassword" placeholder="Password" required>
+                            <input type="password" id="txtPassword" name="password" placeholder="Password" required>
                             <span class="required-star">*</span>
                         </div>
                         <div class="col-md-4">
@@ -91,7 +91,7 @@
                             <span class="required-star">*</span>
                         </div>
                         <div class="col-lg-8 col-md-12">
-                            <button id="btnRegister" class="btn black" type="submit">Register</button>
+                            <button id="btnRegister" onclick="doRegister(`${email}`,`${password}`);" class="btn black" type="submit">Register</button>
                             <h5>not Registered? <a href="login.html">Login here</a></h5>
                         </div>
                     </div>
