@@ -27,6 +27,12 @@ func SetupRouter() *gin.Engine {
 	router.Use(cors.New(config))
 	router.Use(static.Serve("/", static.LocalFile("./views", true)))
 
+	router.GET("/test", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"message": "Hello",
+		})
+	})
+
 	api := router.Group("/api")
 
 	api.POST("/sign_up", Authentication.SignUp)
