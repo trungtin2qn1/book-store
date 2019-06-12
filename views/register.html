@@ -79,7 +79,7 @@
                 <form>
                     <div class="row">
                         <div class="col-md-4">
-                            <input type="text" autofocus placeholder="Enter User Name" required>
+                            <input type="text" id="txtEmail" autofocus placeholder="Enter Your Email" required>
                             <span class="required-star">*</span>
                         </div>
                         <div class="col-md-4">
@@ -181,20 +181,7 @@
         </div>
     </footer>
     <!-- Validate Password -->
-    <script type="text/javascript">
-        var password = document.getElementById("txtPassword")
-        , confirm_password = document.getElementById("txtConfirmPassword");
-
-        function validatePassword(){
-          if(password.value != confirm_password.value) {
-            confirm_password.setCustomValidity("Your password Don't Match");
-        } else {
-            confirm_password.setCustomValidity('');
-        }
-    }
-    password.onchange = validatePassword;
-    confirm_password.onkeyup = validatePassword;
-    </script>
+    <script src="js/register.js"></script>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/owl.carousel.min.js"></script>
