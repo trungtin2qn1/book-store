@@ -6,9 +6,9 @@ import (
 
 //Cart ...
 type Cart struct {
-	ID     bson.ObjectId `json:"id,omitempty" bson:"_id,omitempty" form:"id,omitempty"`
-	Amount int           `json:"amount,omitempty"`
-	BookID bson.ObjectId `json:"book_id,omitempty" bson:"_book_id,omitempty" form:"book_id,omitempty"`
+	ID     bson.ObjectId `json:"id" bson:"_id,omitempty" form:"id,omitempty"`
+	Amount int           `json:"amount"`
+	BookID bson.ObjectId `json:"book_id" bson:"_book_id,omitempty" form:"book_id,omitempty"`
 }
 
 //CreateCart ...

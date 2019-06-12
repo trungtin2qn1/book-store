@@ -17,6 +17,7 @@ func GetAllBooks(c *gin.Context) {
 //GetBooksInfoByID ...
 func GetBookInfoByID(c *gin.Context) {
 	bookID := c.Param("book_id")
+	fmt.Println("Book ID:", bookID)
 	book, _ := Book.GetBookByID(bookID)
 	c.JSON(200, book)
 }

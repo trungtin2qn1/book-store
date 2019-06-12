@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 
 <head>
+
+    <script>
+
+        const getBookInfo = async function (customer_id, book_id) {
+            const response = await fetch('http://127.0.0.1:2013/api/auth/customer/' + customer_id + '/book/' + book_id, {
+                method: 'GET',
+            });
+            const myJson = await response.json(); //extract JSON from the http response
+            // do something with myJson
+            console.log(myJson)
+
+            return (true, myJson)
+        }
+
+    </script>
+
 </head>
 
 <body>
-    <script>
-        function UserAction() {
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    alert(this.responseText);
-                }
-            };
-            xhttp.open("GET", "localhost:2013/api/auth/customer/5cc967ab2daf5e525551304d/books", true);
-            //xhttp.setRequestHeader("Content-type", "application/json");
-            //xhttp.send("Your JSON Data Here");
-            console.log(xhttp.response)
-        }
-    </script>
-    <button type="submit" onclick="UserAction()">Search</button>
+    <button type="submit" onclick="getBookInfo('5cc967ab2daf5e525551304d', '5cfe859b2daf5e6ca2ffbfa2')">Get book info</button>
 </body>
 
 </html>

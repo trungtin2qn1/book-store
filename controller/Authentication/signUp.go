@@ -11,8 +11,8 @@ import (
 
 //SignUp ...
 func SignUp(c *gin.Context) {
+	fmt.Println()
 	authReq := Authentication.AuthReq{}
-	//err := c.ShouldBind(&authReq)
 	err := c.ShouldBindJSON(&authReq)
 	if err != nil {
 		fmt.Println(authReq.Email)

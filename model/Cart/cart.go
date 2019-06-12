@@ -62,7 +62,7 @@ func UpdateCartInfo(customerID, cartID string, newCart database.Cart) (database.
 
 	customer := database.Customer{}
 	customer.ID = bson.ObjectIdHex(customerID)
-	err := database.GetMongoDB().C(database.COL_CUSTOMERS).Find(bson.M{}).One(&customer)
+	err := database.GetMongoDB().C(database.COL_CUSTOMERS).Find(bson.M{"_id": customer.ID}).One(&customer)
 	if err != nil {
 		fmt.Println(err)
 	}

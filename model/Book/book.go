@@ -38,9 +38,10 @@ func GetAllBooks() ([]database.Book, error) {
 
 //GetBookByID ...
 func GetBookByID(bookID string) (database.Book, error) {
+	fmt.Println("book id:", bookID)
 	res := database.Book{}
 	res.ID = bson.ObjectIdHex(bookID)
-	err := database.GetMongoDB().C(database.COL_BOOKS).Find(bson.M{}).One(&res)
+	err := database.GetMongoDB().C(database.COL_BOOKS).Find(bson.M{"_id": res.ID}).One(&res)
 	if err != nil {
 		fmt.Println(err)
 	}
