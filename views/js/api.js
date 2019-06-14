@@ -61,7 +61,7 @@ const register = async function (email, password) {
         password: password,
     };
 
-    console.log(myBody);
+    // console.log(myBody);
 
     //Tạo ra 1 http request
     //url: http://127.0.0.1:2013/api.sign_up
