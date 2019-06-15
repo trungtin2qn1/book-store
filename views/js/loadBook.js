@@ -1,12 +1,5 @@
-const TestgetAllBooks = async function(input){
-    var res = await getAllBooks(input);
-    console.log("res:", res);
-    console.log("res[0]:", res[0]);
-    console.log("res[1]:", res[1]);
-}
-
 var count = 0;
-var div = document.getElementById('book-recommendes');
+var div = document.getElementById('all-books');
 const loadMoreBooks = async function(){
 	let res = await fetch('http://127.0.0.1:2013/api/auth/customer/1/books');
 	let posts = await res.json();
