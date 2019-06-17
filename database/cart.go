@@ -1,6 +1,8 @@
 package database
 
 import (
+	"fmt"
+
 	"gopkg.in/mgo.v2/bson"
 )
 
@@ -18,5 +20,6 @@ func CreateCart(amount int, bookID bson.ObjectId) (Cart, error) {
 		BookID: bookID,
 	}
 	cart.ID = bson.NewObjectId()
+	fmt.Println(cart)
 	return cart, nil
 }

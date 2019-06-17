@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<head>
+
+    <script src="js/api.js"></script>
+    <script src="js/test.js"></script>
+
+</head>
+
+<body>
+    <script>
+        const getAllOrdersInfoTest = async function (customer_id) {
+            const response = await fetch('http://127.0.0.1:2013/api/auth/customer/' + customer_id + '/orders', {
+                method: 'GET',
+            });
+            const myJson = await response.json(); //extract JSON from the http response
+            // do something with myJson
+            console.log(myJson)
+
+            return [true, myJson]
+        }
+    </script>
+    <button type="submit" onclick="getAllOrdersInfoTest('5cc967ab2daf5e525551304d')">get all
+        orders</button>
+</body>
+
+</html>

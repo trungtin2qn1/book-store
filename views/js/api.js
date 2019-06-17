@@ -220,6 +220,201 @@ const getBookInfo = async function (customer_id, book_id) {
 //     "comments": []
 // }
 
+//Input:
+//"book_id": id of book
+//"amount": amount of book want to buy
+//"user_id": id of customer
+const addBookToCart = async function (user_id, amount, book_id) {
+
+    var myBody = {
+        book_id: book_id,
+        amount: amount
+    };
+
+    console.log(myBody);
+
+    const response = await fetch('http://127.0.0.1:2013/api/auth/customer/' + user_id + '/cart', {
+        method: 'POST',
+        body: JSON.stringify(myBody), // string or object
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    const myJson = await response.json(); //extract JSON from the http response
+    // do something with myJson
+    console.log(myJson)
+
+    return [true, myJson]
+}
+//Output:
+// "amount": 2,
+// "book_id": "5cc967ab2daf5e525551304d",
+// "id": "5d072b372daf5e6f63a24f46"
+
+//Input:
+//"cart_id": id of cart (each books in cart will have 1 id)
+//"amount": amount of book want to buy
+//"user_id": id of customer
+const updateCartAmount = async function (user_id, cart_id, amount) {
+
+    var myBody = {
+        amount: amount
+    };
+
+    console.log(myBody);
+
+    const response = await fetch('http://127.0.0.1:2013/api/auth/customer/' + user_id + '/cart/' + cart_id, {
+        method: 'PUT',
+        body: JSON.stringify(myBody), // string or object
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    const myJson = await response.json(); //extract JSON from the http response
+    // do something with myJson
+    console.log(myJson)
+
+    return [true, myJson]
+}
+//Output:
+// "amount": 2,
+// "book_id": "5cc967ab2daf5e525551304d",
+// "id": "5d072b372daf5e6f63a24f46"
+
+//Input:
+// "customer_id": id of user
+const getAllCartsInfo = async function (customer_id){
+    const response = await fetch('http://127.0.0.1:2013/api/auth/customer/' + customer_id + '/carts', {
+        method: 'GET',
+    });
+    const myJson = await response.json(); //extract JSON from the http response
+    // do something with myJson
+    console.log(myJson)
+
+    return [true, myJson]
+}
+//Output:
+// [
+//     {
+//         "id": "5d072e5e2daf5e3fe44f4e50",
+//         "amount": 3,
+//         "book_id": "5cfcc7152daf5e2226a62eb6",
+//         "title": "title",
+//         "description": "description",
+//         "price": 15,
+//         "discount_price": 10
+//     }
+// ]
+
+//Input:
+//"customer_id": id of customer
+const checkOut = async function (customer_id){
+    var myBody = {
+        note: "abc"
+    };
+
+    const response = await fetch('http://127.0.0.1:2013/api/auth/customer/' + customer_id + '/order', {
+        method: 'POST',
+        body: JSON.stringify(myBody), // string or object
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    const myJson = await response.json(); //extract JSON from the http response
+    // do something with myJson
+    console.log(myJson)
+
+    return [true, myJson]
+}
+//Output:
+// "book_id": ["5cfe83312daf5e6ca2ffbfa0", ...]
+// "customer_id": "5cc967ab2daf5e525551304d"
+// "id": "5d073c3d2daf5e7a9ef94a60"
+// "note": "abc"
+// "order_date": 1560755261
+// status: 0
+
+//Input:
+//"customer_id": id of customer
+//"cart_id": id of cart
+const deleteCart = async function (customer_id, cart_id){
+
+    const response = await fetch('http://127.0.0.1:2013/api/auth/customer/' + customer_id + '/cart/' + cart_id, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    const myJson = await response.json(); //extract JSON from the http response
+    // do something with myJson
+    console.log(myJson)
+
+    return [true, myJson]
+}
+//Output:
+//"message": "Success"
+
+//Input:
+// "customer_id": id of user
+const getAllOrdersInfo = async function (customer_id){
+    const response = await fetch('http://127.0.0.1:2013/api/auth/customer/' + customer_id + '/orders', {
+        method: 'GET',
+    });
+    const myJson = await response.json(); //extract JSON from the http response
+    // do something with myJson
+    console.log(myJson)
+
+    return [true, myJson]
+}
+//Output:
+// [
+//     {
+//         "id": "5cfe74e12daf5e3a67545b6f",
+//         "note": "Note",
+//         "order_date": 1560179937,
+//         "shipping_fee": 10000,
+//         "status": 0,
+//         "book_id": [
+//             "5cfcc7152daf5e2226a62eb6"
+//         ],
+//         "payment": {
+//             "id": "",
+//             "method": ""
+//         },
+//         "customer_id": "5cc967ab2daf5e525551304d"
+//     },
+//     {
+//         "id": "5cfe75762daf5e532903c102",
+//         "note": "Note",
+//         "order_date": 1560180086,
+//         "shipping_fee": 10000,
+//         "status": 0,
+//         "book_id": [
+//             "5cfcc7152daf5e2226a62eb6"
+//         ],
+//         "payment": {
+//             "id": "",
+//             "method": ""
+//         },
+//         "customer_id": "5cc967ab2daf5e525551304d"
+//     },
+//     {
+//         "id": "5d073c3d2daf5e7a9ef94a60",
+//         "note": "abc",
+//         "order_date": 1560755261,
+//         "shipping_fee": 10000,
+//         "status": 0,
+//         "book_id": [
+//             "5cfe83312daf5e6ca2ffbfa0"
+//         ],
+//         "payment": {
+//             "id": "",
+//             "method": ""
+//         },
+//         "customer_id": "5cc967ab2daf5e525551304d"
+//     }
+// ]
+
 function getCache(key) {
     console.log(localStorage.getItem(key))
     return localStorage.getItem(key)

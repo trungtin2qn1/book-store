@@ -11,7 +11,10 @@ import (
 //GetAllOrders ...
 func GetAllOrders(customerID string) ([]database.Order, error) {
 	res := []database.Order{}
-	err := database.GetMongoDB().C(database.COL_ORDERS).Find(bson.D{}).All(&res)
+	customer := database.Customer{}
+	customer.ID = bson.ObjectIdHex(customerID)
+	fmt.Println(customer)
+	err := database.GetMongoDB().C(database.COL_ORDERS).Find(bson.M{"_customer_id": customer.ID}).All(&res)
 	if err != nil {
 		fmt.Println(err)
 	}
