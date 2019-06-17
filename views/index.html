@@ -11,6 +11,42 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/styles.css">
+    <!-- <script type="text/javascript">
+    var count = 0;
+    var div = document.getElementById('all-books');
+
+    const loadBooks = async function() {
+        const response = await fetch('http://127.0.0.1:2013/api/auth/customer/1/books');
+        const myJson = await response.json(); //extract JSON from the http response
+        return myJson;
+    }
+
+    function load() {
+        loadBooks()
+            .then((books) => {
+                for (var i = 0; i < books.length; i++) {
+                    div.innerHTML += `
+                    <div class="col-lg-2 col-md-3 col-sm-4">
+                            <div class="item">
+                                <a href="product-single.html"><img class="product-image" src="${books[count].images}" alt="img">
+                                    <h3 class="product-title">${books[count].title}</h3>
+                                </a>
+                                <h6>Price: <span class="product-price">${books[count].price}</span></h6>
+                                <button class="btn btn-add-to-cart">Add to Cart</button>
+                            </div>
+                        </div>
+                    `
+                    count = count + 1;
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
+
+    window.onload = load;
+    </script> -->
 </head>
 
 <body>
@@ -33,9 +69,7 @@
             <div class="container">
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="logo"></a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -63,8 +97,7 @@
                             <span class="quntity">3</span>
                         </div>
                         <form class="form-inline my-2 my-lg-0">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search here..."
-                                aria-label="Search">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search here..." aria-label="Search">
                             <span class="fa fa-search"></span>
                         </form>
                     </div>
@@ -134,7 +167,7 @@
                 <h2>highly recommendes books</h2>
                 <hr>
             </div>
-            <div class="row" >
+            <div class="row">
                 <div class="col-lg-3 col-md-6">
                     <div class="item">
                         <img src="images/img1.jpg" alt="img">
@@ -222,7 +255,7 @@
                 </div>
             </div>
             <div class="btn-sec">
-                <button onclick="loadBooks()" class="btn gray-btn">view all books</button> 
+                <button onclick="load()" class="btn gray-btn">view all books</button>
             </div>
         </div>
     </section>

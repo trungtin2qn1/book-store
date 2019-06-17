@@ -1,6 +1,20 @@
 var count = 0;
 var div = document.getElementById('all-books');
 
+const loadBooks = async function () {
+    const response = await fetch('http://127.0.0.1:2013/api/auth/customer/1/books');
+    const myJson = await response.json(); //extract JSON from the http response
+    return myJson;
+}
+
+// const detailBook = async function(idBook){
+// 	const res = await fetch('http://127.0.0.1:2013/api/auth/customer/123/book/' + idBook'');
+// 	const detBook = await res.json();
+// 	return detBook;
+// }
+
+
+
 function load() {
     loadBooks()
         .then((books) => {
@@ -23,11 +37,8 @@ function load() {
             console.log(error);
         })
 }
-const loadBooks = async function () {
-    const response = await fetch('http://127.0.0.1:2013/api/auth/customer/1/books');
-    const myJson = await response.json(); //extract JSON from the http response
-    return myJson;
-}
+
+
 window.onload = load;
 
 // const loadMoreBooks = async function(){
