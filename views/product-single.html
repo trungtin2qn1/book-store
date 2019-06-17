@@ -11,6 +11,55 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/styles.css">
+    <script type="text/javascript">
+    const detailBook = async function(idBook) {
+        const res = await fetch('http://127.0.0.1:2013/api/auth/customer/123/book/'+ idBook);
+        const detBook = await res.json();
+        return detBook;
+    }
+
+    function getCache(key) {
+        console.log(localStorage.getItem(key))
+        return localStorage.getItem(key)
+    }
+
+    function deleteCache(key) {
+        localStorage.removeItem(key)
+        return true
+    }
+
+    function setCache(key, value) {
+        localStorage.setItem(key, value)
+        return true
+    }
+
+    function single() {
+        var div = document.getElementById('detail-book');
+        var value = getCache('id');
+        console.log(value);
+        detailBook(value)
+        .then((detBook) => {
+                div.innerHTML += `
+                <div class="col-md-6 slider-sec">
+                                  <img src="${detBook.images}" class="img-fluid">
+                              </div>
+                              <div class="col-md-6 slider-content">
+                                  <span>
+                                      <h2 class="product-title">${detBook.id}</h2>
+                                  </span>
+                                  <p class="product-des">${detBook.description}</p>
+                                  <h4>Price: <span class="product-price">${detBook.price}</span></h4>
+                                  <strong>Save <span class="save-cost" style="color: red;">${detBook.discount_price}</span>(69%)</strong>
+                                  <div class="btn-sec">
+                                      <button class="btn btn-add-to-cart">Add to Cart</button>
+                                  </div>
+                              </div>
+                `
+            })
+            .catch((error) => console.log(error))
+    }
+    window.onload = single;
+    </script>
 </head>
 
 <body>
@@ -32,9 +81,7 @@
             <div class="container">
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="logo"></a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -62,8 +109,7 @@
                             <span class="quntity">3</span>
                         </div>
                         <form class="form-inline my-2 my-lg-0">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search here..."
-                                aria-label="Search">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search here..." aria-label="Search">
                             <span class="fa fa-search"></span>
                         </form>
                     </div>
@@ -80,43 +126,9 @@
     <section class="product-sec">
         <div class="container">
             <h1>7 Day Self publish How to Write a Book</h1>
-            <div class="row">
-                <div class="col-md-6 slider-sec">
-                    <!-- main slider carousel -->
-                    <div id="myCarousel" class="carousel slide">
-                        <!-- main slider carousel items -->
-                        <div class="carousel-inner">
-                            <div class="active item carousel-item" data-slide-number="0">
-                                <img src="images/product1.jpg" class="img-fluid">
-                            </div>
-                            <div class="item carousel-item" data-slide-number="1">
-                                <img src="images/product2.jpg" class="img-fluid">
-                            </div>
-                            <div class="item carousel-item" data-slide-number="2">
-                                <img src="images/product3.jpg" class="img-fluid">
-                            </div>
-                        </div>
-                        <!-- main slider carousel nav controls -->
-                        <ul class="carousel-indicators list-inline">
-                            <li class="list-inline-item active">
-                                <a id="carousel-selector-0" class="selected" data-slide-to="0"
-                                    data-target="#myCarousel">
-                                    <img src="images/product1.jpg" class="img-fluid product-image">
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a id="carousel-selector-1" data-slide-to="1" data-target="#myCarousel">
-                                    <img src="images/product2.jpg" class="img-fluid">
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a id="carousel-selector-2" data-slide-to="2" data-target="#myCarousel">
-                                    <img src="images/product3.jpg" class="img-fluid">
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!--/main slider carousel-->
+            <div class="row" id="detail-book">
+                <!-- <div class="col-md-6 slider-sec">
+                    <img src="images/product1.jpg" class="img-fluid">
                 </div>
                 <div class="col-md-6 slider-content">
                     <span>
@@ -130,7 +142,7 @@
                     <div class="btn-sec">
                         <button class="btn btn-add-to-cart">Add to Cart</button>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
