@@ -11,33 +11,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/styles.css">
-    <script type="text/javascript">
-        function load(books){
-            var count = 0;
-            var div = document.getElementById('all-books');
-            for (var i = 0; i < books.length; i++) {
-            div.innerHTML +=`
-            <div class="col-lg-2 col-md-3 col-sm-4">
-                    <div class="item">
-                        <a href="product-single.html"><img class="product-image" src="${books[count].images}" alt="img">
-                            <h3 class="product-title">${books[count].title}</h3>
-                        </a>
-                        <h6>Price: <span class="product-price">${books[count].price}</span></h6>
-                        <button class="btn btn-add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-            `
-            count = count + 1;
-            }
-        }
-        async function loadBooks(){
-            const response = await fetch('http://127.0.0.1:2013/api/auth/customer/1/books');
-            const myJson = await response.json(); //extract JSON from the http response
-            
-            load(myJson);
-        }
-        window.onload = loadBooks;
-    </script>
 </head>
 
 <body>
