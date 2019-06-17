@@ -55,12 +55,12 @@ func SetupRouter() *gin.Engine {
 			customer.DELETE("/:customer_id/cart/:cart_id", Cart.DeleteCart)
 			customer.GET("/:customer_id/orders", Order.GetAllOrders)
 		}
-		staff := auth.Group("/staff")
-		{
-			staff.POST("/book", Book.CreateBook)
-			staff.PUT("/book/:book_id", Book.UpdateBookInfo)
-			staff.DELETE("/book/:book_id", Book.DeleteBook)
-		}
+		// staff := auth.Group("/staff")
+		// {
+		// 	staff.POST("/book", Book.CreateBook)
+		// 	staff.PUT("/book/:book_id", Book.UpdateBookInfo)
+		// 	staff.DELETE("/book/:book_id", Book.DeleteBook)
+		// }
 	}
 
 	router.NoRoute(func(c *gin.Context) {
