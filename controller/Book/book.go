@@ -8,9 +8,16 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-//GetAllBooks ...
-func GetAllBooks(c *gin.Context) {
-	books, _ := Book.GetAllBooks()
+//GetBooks ...
+func GetBooks(c *gin.Context) {
+	option := c.Query("option")
+	books := []database.Book{}
+	if option == "search" {
+		query := c.Query("query")
+		books, _ = Book.SearchBooks(query)
+	} else {
+		books, _ = Book.GetAllBooks()
+	}
 	c.JSON(200, books)
 }
 
