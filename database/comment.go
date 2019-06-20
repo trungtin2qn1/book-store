@@ -4,11 +4,11 @@ import "gopkg.in/mgo.v2/bson"
 
 //Comment ...
 type Comment struct {
-	ID          bson.ObjectId `json:"id,omitempty" bson:"_id,omitempty" form:"id,omitempty"`
-	ObjectID    bson.ObjectId `json:"object_id,omitempty" bson:"_object_id,omitempty"`
-	ObjectType  string        `json:"object_type,omitempty"`
-	Content     string        `json:"content,omitempty"`
-	CommentDate uint64        `json:"comment_date,omitempty"`
+	ID          bson.ObjectId `json:"id" bson:"_id,omitempty" form:"id,omitempty"`
+	ObjectID    bson.ObjectId `json:"object_id" bson:"_object_id,omitempty"`
+	ObjectType  string        `json:"object_type"`
+	Content     string        `json:"content"`
+	CommentDate uint64        `json:"comment_date"`
 	StatusReply bool          `json:"status_reply"`
 }
 

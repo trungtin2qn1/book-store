@@ -4,14 +4,14 @@ import "gopkg.in/mgo.v2/bson"
 
 //Order ...
 type Order struct {
-	ID          bson.ObjectId   `json:"id,omitempty" bson:"_id,omitempty" form:"id,omitempty"`
-	Note        string          `json:"note,omitempty"`
-	OrderDate   uint64          `json:"order_date,omitempty"`
-	ShippingFee uint64          `json:"shipping_fee,omitempty"`
-	Status      uint64          `json:"status,omitempty"`
-	BookIDs     []bson.ObjectId `json:"book_id,omitempty" bson:"_book_id,omitempty"`
-	Payment     Payment         `json:"payment,omitempty"`
-	CustomerID  bson.ObjectId   `json:"customer_id,omitempty" bson:"_customer_id,omitempty"`
+	ID          bson.ObjectId   `json:"id" bson:"_id,omitempty" form:"id,omitempty"`
+	Note        string          `json:"note"`
+	OrderDate   uint64          `json:"order_date"`
+	ShippingFee uint64          `json:"shipping_fee"`
+	Status      uint64          `json:"status"`
+	BookIDs     []bson.ObjectId `json:"book_id" bson:"_book_id,omitempty"`
+	Payment     Payment         `json:"payment"`
+	CustomerID  bson.ObjectId   `json:"customer_id" bson:"_customer_id,omitempty"`
 }
 
 func CreateOrder(

@@ -36,11 +36,29 @@ func GetAllBooks() ([]database.Book, error) {
 	return res, nil
 }
 
+//SearchBooks ...
+func SearchBooks(text string) ([]database.Book, error) {
+	res := []database.Book{}
+	// query := bson.M{
+	// 	"$text": bson.M{
+	// 		"$search": text,
+	// 	},
+	// }
+	regex := bson.M{"$regex": bson.RegEx{Pattern: text}}
+	err := database.GetMongoDB().C(database.COL_BOOKS).Find(bson.M{"title": regex}).All(&res)
+	//err := database.GetMongoDB().C(database.COL_BOOKS).Find(query).All(&res)
+	if err != nil {
+		fmt.Println(err)
+	}
+	return res, nil
+}
+
 //GetBookByID ...
 func GetBookByID(bookID string) (database.Book, error) {
+	fmt.Println("book id:", bookID)
 	res := database.Book{}
 	res.ID = bson.ObjectIdHex(bookID)
-	err := database.GetMongoDB().C(database.COL_BOOKS).Find(bson.M{}).One(&res)
+	err := database.GetMongoDB().C(database.COL_BOOKS).Find(bson.M{"_id": res.ID}).One(&res)
 	if err != nil {
 		fmt.Println(err)
 	}

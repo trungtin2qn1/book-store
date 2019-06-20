@@ -4,8 +4,8 @@ import "gopkg.in/mgo.v2/bson"
 
 //Payment ...
 type Payment struct {
-	ID     bson.ObjectId `json:"id,omitempty" bson:"_id,omitempty" form:"id,omitempty"`
-	Method string        `json:"method,omitempty"`
+	ID     bson.ObjectId `json:"id" bson:"_id,omitempty" form:"id,omitempty"`
+	Method string        `json:"method"`
 }
 
 //CreatePayment ...

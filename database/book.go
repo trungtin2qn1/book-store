@@ -8,19 +8,19 @@ import (
 
 //Books ...
 type Book struct {
-	ID            bson.ObjectId `json:"id,omitempty" bson:"_id,omitempty" form:"id,omitempty"`
-	Title         string        `json:"title,omitempty"`
-	Description   string        `json:"description,omitempty"`
-	Organization  string        `json:"organization,omitempty"`
-	Author        string        `json:"author,omitempty"`
-	Inventory     uint64        `json:"inventory,omitempty"`
-	FromTime      uint64        `json:"from_time,omitempty"`
-	ToTime        uint64        `json:"to_time,omitempty"`
-	Price         uint64        `json:"price,omitempty"`
-	DiscountPrice uint64        `json:"discount_price,omitempty"`
-	CategoryName  string        `json:"category_name,omitmpey"`
-	Images        []string      `json:"images,omitempty"`
-	Comments      []Comment     `json:"comments,omitempty"`
+	ID            bson.ObjectId `json:"id" bson:"_id,omitempty" form:"id,omitempty"`
+	Title         string        `json:"title"`
+	Description   string        `json:"description"`
+	Organization  string        `json:"organization"`
+	Author        string        `json:"author"`
+	Inventory     uint64        `json:"inventory"`
+	FromTime      uint64        `json:"from_time"`
+	ToTime        uint64        `json:"to_time"`
+	Price         uint64        `json:"price"`
+	DiscountPrice uint64        `json:"discount_price"`
+	CategoryName  string        `json:"category_name"`
+	Images        []string      `json:"images"`
+	Comments      []Comment     `json:"comments"`
 }
 
 //CreateBook ...

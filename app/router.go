@@ -27,6 +27,12 @@ func SetupRouter() *gin.Engine {
 	router.Use(cors.New(config))
 	router.Use(static.Serve("/", static.LocalFile("./views", true)))
 
+	router.GET("/test", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"message": "Hello",
+		})
+	})
+
 	api := router.Group("/api")
 
 	api.POST("/sign_up", Authentication.SignUp)
@@ -39,7 +45,7 @@ func SetupRouter() *gin.Engine {
 			customer.GET("/:customer_id", Customer.GetCustomerByID)
 			customer.PUT("/:customer_id", Customer.UpdateCustomerInfo)
 			customer.GET("/:customer_id/book/:book_id/comments", Comment.GetCommentsByBookID)
-			customer.GET("/:customer_id/books", Book.GetAllBooks)
+			customer.GET("/:customer_id/books", Book.GetBooks)
 			customer.GET("/:customer_id/book/:book_id", Book.GetBookInfoByID)
 			customer.PUT("/:customer_id/customer/:customer_id", Customer.UpdateCustomerInfo)
 			customer.POST("/:customer_id/cart", Cart.AddBookToCart)
@@ -48,12 +54,6 @@ func SetupRouter() *gin.Engine {
 			customer.POST("/:customer_id/order", Order.CreateOrder)
 			customer.DELETE("/:customer_id/cart/:cart_id", Cart.DeleteCart)
 			customer.GET("/:customer_id/orders", Order.GetAllOrders)
-		}
-		staff := auth.Group("/staff")
-		{
-			staff.POST("/book", Book.CreateBook)
-			staff.PUT("/book/:book_id", Book.UpdateBookInfo)
-			staff.DELETE("/book/:book_id", Book.DeleteBook)
 		}
 	}
 

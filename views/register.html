@@ -74,12 +74,13 @@
     </div>
     <section class="static about-sec">
         <div class="container">
-            <h1>My Account / REgister</h1>
+            <h1>My Account / Register</h1>
+            <p>If you want to have offers from us, just create an account.</p>
             <div class="form">
                 <form>
                     <div class="row">
                         <div class="col-md-4">
-                            <input type="text" autofocus placeholder="Enter User Name" required>
+                            <input type="text" id="txtEmail" name="txtEmail" autofocus placeholder="Enter Your Email" required>
                             <span class="required-star">*</span>
                         </div>
                         <div class="col-md-4">
@@ -91,7 +92,7 @@
                             <span class="required-star">*</span>
                         </div>
                         <div class="col-lg-8 col-md-12">
-                            <button id="btnRegister" class="btn black" type="submit">Register</button>
+                            <button class="btn black" type="submit" onclick="doRegister()">Register</button>
                             <h5>not Registered? <a href="login.html">Login here</a></h5>
                         </div>
                     </div>
@@ -105,10 +106,9 @@
                 <div class="col-md-4">
                     <div class="address">
                         <h4>Our Address</h4>
-                        <h6>The BookStore Theme, 4th Store
-                        Beside that building, USA</h6>
+                        <h6>The Book Store, 227 Nguyen Van Cu St., Ho Chi Minh City</h6>
                         <h6>Call : 800 1234 5678</h6>
-                        <h6>Email : info@bookstore.com</h6>
+                        <h6>Email : toitin@bookstore.com</h6>
                     </div>
                     <div class="timing">
                         <h4>Timing</h4>
@@ -166,7 +166,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <h5>(C) 2017. All Rights Reserved. BookStore Wordpress Theme</h5>
+                        <h5>(C) 2019. Book Store</h5>
                     </div>
                     <div class="col-md-6">
                         <div class="share align-middle">
@@ -182,19 +182,21 @@
         </div>
     </footer>
     <!-- Validate Password -->
+    <script src="js/passport.js"></script>
+    <script src="js/api.js"></script>
     <script type="text/javascript">
-        var password = document.getElementById("txtPassword")
-        , confirm_password = document.getElementById("txtConfirmPassword");
-
-        function validatePassword(){
-          if(password.value != confirm_password.value) {
-            confirm_password.setCustomValidity("Your password Don't Match");
-        } else {
-            confirm_password.setCustomValidity('');
+        var password = document.getElementById("txtPassword"), 
+            confirm_password = document.getElementById("txtConfirmPassword"), 
+            email = document.getElementById("txtEmail");
+        function validatePassword() {
+            if (password.value != confirm_password.value) {
+                confirm_password.setCustomValidity("Your password Don't Match!");
+            } else {
+                confirm_password.setCustomValidity('');
+            }
         }
-    }
-    password.onchange = validatePassword;
-    confirm_password.onkeyup = validatePassword;
+        password.onchange = validatePassword;
+        confirm_password.onkeyup = validatePassword;
     </script>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
