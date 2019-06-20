@@ -15,8 +15,8 @@ function load() {
                 div.innerHTML += `
                     <div class="col-lg-2 col-md-3 col-sm-4">
                             <div class="item">
-                                <a href="product-single.html" onclick="bd('${books[count].id}')"><img class="product-image" src="${books[count].images}" alt="img">
-                                    <h3 class="product-title">${books[count].title}</h3>
+                                <a href="product-single.html" onclick="bd('${books[count].id}')"><img class="product-image" src="${books[count].images}" alt="img" style="width:100%;">
+                                    <h3 class="product-title">'${books[count].title}'</h3>
                                 </a>
                                 <h6>Price: <span class="product-price">${books[count].price}</span></h6>
                                 <button class="btn btn-add-to-cart">Add to Cart</button>
