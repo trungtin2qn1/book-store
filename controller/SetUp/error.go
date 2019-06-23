@@ -19,5 +19,6 @@ func InitStuffs() {
 		"Can't hash password":           http.StatusServiceUnavailable,
 		"Can't decode hash of password": http.StatusServiceUnavailable,
 		"Token is invalid":              http.StatusUnauthorized,
+		"You has not registered yet":    http.StatusUnauthorized,
 	}
 }

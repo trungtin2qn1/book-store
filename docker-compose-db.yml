@@ -8,6 +8,6 @@ services:
       # MONGO_INITDB_ROOT_PASSWORD: bs_1234
       MONGO_INITDB_DATABASE: book_store
     ports:
-      - "27017:27017"
+      - "27016:27017"
     volumes:
       - ./database/initMongo/initDB.js:/docker-entrypoint-initdb.d/initDB.js:ro
