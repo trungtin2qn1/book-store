@@ -24,7 +24,9 @@
 
         function load() {
             var count = 0;
+            var c = 3;
             var div = document.getElementById('all-books');
+            var div4 = document.getElementById('highly-books');
             loadBooks()
                 .then((books) => {
                     for (var i = 0; i < books.length; i++) {
@@ -40,6 +42,23 @@
                                 </div>
                             `
                         count = count + 1;
+                    }
+                    for (let j = 0; j < books.length; j++) {
+                        div4.innerHTML += `
+                        <div class="col-lg-3 col-md-6">
+                            <div class="item">
+                            <img src="${books[c].images}" alt="img">
+                            <h3>7-day self publish...</h3>
+                            <h6><span class="price">$49</span> / <a href="shopping-cart.html">Add to Cart</a></h6>
+                                <div class="hover">
+                                <a href="product-single.html" onclick="setIDBookCache('${books[c].id}')">
+                                    <span><i class="fa fa-long-arrow-right" aria-hidden="true"></i></span>
+                                </a>
+                                </div>
+                            </div>
+                        </div>
+                        `
+                        c = c - 1;
                     }
                 })
                 .catch((error) => {
@@ -113,6 +132,9 @@
                             <li class="navbar-item">
                                 <a href="login.html" class="nav-link">Login</a>
                             </li>
+                            <li class="navbar-item">
+                                <a href="list-orders.html" class="nav-link">My Orders</a>
+                            </li>
                         </ul>
                         <div class="cart my-2 my-lg-0">
                             <span>
@@ -140,8 +162,8 @@
         <div class="container">
             <h2>highly recommendes books</h2>
             <div class="recomended-sec">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6">
+                <div class="row" id="highly-books">
+                    <!-- <div class="col-lg-3 col-md-6">
                         <div class="item">
                             <img src="images/img1.jpg" alt="img">
                             <h3>how to be a bwase</h3>
@@ -152,44 +174,7 @@
                                 </a>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="item">
-                            <img src="images/img2.jpg" alt="img">
-                            <h3>How to write a book...</h3>
-                            <h6><span class="price">$19</span> / <a href="#">Add to Cart</a></h6>
-                            <span class="sale">Sale !</span>
-                            <div class="hover">
-                                <a href="product-single.html">
-                                    <span><i class="fa fa-long-arrow-right" aria-hidden="true"></i></span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="item">
-                            <img src="images/img3.jpg" alt="img">
-                            <h3>7-day self publish...</h3>
-                            <h6><span class="price">$49</span> / <a href="#">Add to Cart</a></h6>
-                            <div class="hover">
-                                <a href="product-single.html">
-                                    <span><i class="fa fa-long-arrow-right" aria-hidden="true"></i></span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="item">
-                            <img src="images/img4.jpg" alt="img">
-                            <h3>wendy doniger</h3>
-                            <h6><span class="price">$49</span> / <a href="#">Add to Cart</a></h6>
-                            <div class="hover">
-                                <a href="product-single.html">
-                                    <span><i class="fa fa-long-arrow-right" aria-hidden="true"></i></span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <h2>recently added books to our store</h2>

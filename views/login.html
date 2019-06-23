@@ -11,13 +11,42 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/styles.css">
+    <script src="js/api.js"></script>
     <script>
-        const doSignIn = async function(){
-            let email = document.getElementById('txtEmail').value;
-            let password = document.getElementById('txtPassword').value;
-            var res = await login(email, password);
-            console.log('res: ',res);
+        function getCache(key) {
+            console.log(localStorage.getItem(key))
+            return localStorage.getItem(key)
         }
+        function deleteCache(key) {
+            localStorage.removeItem(key)
+            return true
+        }
+
+        function setCache(key, value) {
+            localStorage.setItem(key, value)
+            return true
+        }
+
+        const doLogin = async function () {
+            var email = document.getElementById('txtEmail').value;
+            var password = document.getElementById('txtPassword').value;
+            var myBody = {
+                email: email,
+                password: password,
+            };
+            fetch('http://127.0.0.1:2013/api/sign_in', {
+                method: 'POST',
+                body: JSON.stringify(myBody), 
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then((respone)=> {
+                console.log(respone.json());
+            })
+            .catch((error) => console.log(error))
+        }
+
     </script>
 </head>
 
@@ -59,6 +88,9 @@
                             <li class="navbar-item active">
                                 <a href="login.html" class="nav-link">Login</a>
                             </li>
+                            <li class="navbar-item">
+                                <a href="list-orders.html" class="nav-link">My Orders</a>
+                            </li>
                         </ul>
                         <div class="cart my-2 my-lg-0">
                             <span>
@@ -89,16 +121,16 @@
                 <form>
                     <div class="row">
                         <div class="col-md-6">
-                            <input type="text" autofocus placeholder="Enter User Name" required>
+                            <input type="text" id="txtEmail" name="txtEmail" autofocus placeholder="Enter Your Email" required>
                             <span class="required-star">*</span>
                         </div>
                         <div class="col-md-6">
-                            <input type="password" placeholder="Enter Password" required>
+                            <input type="password" id="txtPassword" name="txtPassword" placeholder="Enter Password" required>
                             <span class="required-star">*</span>
                         </div>
                         <div class="col-lg-8 col-md-12">
-                            <button id="btnLogin" class="btn black" type="submit">Login</button>
-                            <h5>not Registered? <a href="register.html">REgister here</a></h5>
+                            <button id="btnLogin" class="btn black" type="submit" onclick="doLogin()">Login</button>
+                            <h5>not Registered? <a href="register.html">Register here</a></h5>
                         </div>
                     </div>
                 </form>
@@ -187,7 +219,6 @@
         </div>
     </footer>
     <!-- <script src="js/passport.js"></script> -->
-    <script src="js/api.js"></script>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/owl.carousel.min.js"></script>

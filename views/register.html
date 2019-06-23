@@ -11,13 +11,47 @@
     <link rel="stylesheet" type="text/css" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/styles.css">
     <script>
-        const doRegister = async function(){
-            let email = document.getElementById('txtEmail').value;
-            let password = document.getElementById('txtPassword').value;
-            var res = await register(email, password);
-            window.open('index.html');
+        function getCache(key) {
+            console.log(localStorage.getItem(key))
+            return localStorage.getItem(key)
+        }
+        function deleteCache(key) {
+            localStorage.removeItem(key)
+            return true
         }
 
+        function setCache(key, value) {
+            localStorage.setItem(key, value)
+            return true
+        }
+
+        function setIdCustomer(id){
+            setCache('idCus',id);
+            console.log('idCus: ',id);
+        }
+
+        const doRegister = async function () {
+            var email = document.getElementById('txtEmail').value;
+            var password = document.getElementById('txtPassword').value;
+            var myBody = {
+                email: email,
+                password: password,
+            };
+            fetch('http://127.0.0.1:2013/api/sign_up', {
+                method: 'POST',
+                body: JSON.stringify(myBody), 
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then((res) => {
+                var cus = res.json();
+                setIdCustomer('idCus',cus.id);
+                console.log('id',cus.id);
+            })
+            .catch((error) => console.log(error))
+        }
+        
     </script>
 </head>
 
@@ -58,6 +92,9 @@
                             </li>
                             <li class="navbar-item active">
                                 <a href="login.html" class="nav-link">Login</a>
+                            </li>
+                            <li class="navbar-item">
+                                <a href="list-orders.html" class="nav-link">My Orders</a>
                             </li>
                         </ul>
                         <div class="cart my-2 my-lg-0">
@@ -101,7 +138,7 @@
                             <span class="required-star">*</span>
                         </div>
                         <div class="col-lg-8 col-md-12">
-                            <button id="btnRegister" class="btn black" type="submit" onclick="doRegister()">Register</button>
+                            <button class="btn black" type="submit" onclick="doRegister()">Register</button>
                             <h5>not Registered? <a href="login.html">Login here</a></h5>
                         </div>
                     </div>
@@ -192,7 +229,7 @@
     </footer>
     <!-- Validate Password -->
     <!-- <script src="js/passport.js"></script> -->
-    <script src="js/api.js"></script>
+    <!-- <script src="js/api.js"></script> -->
     <script type="text/javascript">
         var password = document.getElementById("txtPassword"), 
             confirm_password = document.getElementById("txtConfirmPassword"), 

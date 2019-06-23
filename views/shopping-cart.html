@@ -11,15 +11,32 @@
     <link rel="stylesheet" type="text/css" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/styles.css">
     <script>
-    async function addBookToCart(){
-        const res = await fetch('http://127.0.0.1:2013/api/auth/customer//cart');
-        const cartItem = await res.json();
-        return cartItem;
-    }
 
-    function addItemToCart(){
-        
-    }
+        function getCache(key) {
+            console.log(localStorage.getItem(key))
+            return localStorage.getItem(key)
+        }
+        function deleteCache(key) {
+            localStorage.removeItem(key)
+            return true
+        }
+
+        function setCache(key, value) {
+            localStorage.setItem(key, value)
+            return true
+        }
+        async function addBookToCart(){
+            var idUser = getCache('idUser');
+            const res = await fetch('http://127.0.0.1:2013/api/auth/customer/' + idUser + '/cart');
+            const cartItem = await res.json();
+            console.log('res', res);
+            return cartItem;
+        }
+
+        function addItemToCart(){
+
+        }
+        window.onload = addBookToCart;
     </script>
 </head>
 
@@ -61,6 +78,9 @@
                                 </li>
                                 <li class="navbar-item">
                                     <a href="login.html" class="nav-link">Login</a>
+                                </li>
+                                <li class="navbar-item">
+                                        <a href="list-orders.html" class="nav-link">My Orders</a>
                                 </li>
                             </ul>
                             <div class="cart my-2 my-lg-0">
