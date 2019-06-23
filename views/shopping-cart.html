@@ -10,6 +10,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/styles.css">
+    <script>
+    async function addBookToCart(){
+        const res = await fetch('http://127.0.0.1:2013/api/auth/customer//cart');
+        const cartItem = await res.json();
+        return cartItem;
+    }
+
+    function addItemToCart(){
+        
+    }
+    </script>
 </head>
 
 <body>

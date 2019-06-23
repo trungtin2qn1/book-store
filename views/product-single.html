@@ -37,15 +37,17 @@
         var div = document.getElementById('detail-book');
         var value = getCache('id');
         console.log(value);
+        
         detailBook(value)
         .then((detBook) => {
+            console.log('id book: ',detBook.id);
                 div.innerHTML += `
                 <div class="col-md-6 slider-sec">
-                                  <img src="${detBook.images}" class="img-fluid">
+                                  <img src="${detBook.images}" class="img-fluid" style="width:100%;margin:auto;">
                               </div>
                               <div class="col-md-6 slider-content">
                                   <span>
-                                      <h2 class="product-title">${detBook.id}</h2>
+                                      <h2 class="product-title">${detBook.title}</h2>
                                   </span>
                                   <p class="product-des">${detBook.description}</p>
                                   <h4>Price: <span class="product-price">${detBook.price}</span></h4>

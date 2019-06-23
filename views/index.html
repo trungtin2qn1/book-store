@@ -11,6 +11,66 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/styles.css">
+    <script type="text/javascript">   
+        function noticeAddItem(){
+            alert('Added product is DONE ,Please check your Cart!!!');
+        }
+
+        const loadBooks = async function () {
+            const response = await fetch('http://127.0.0.1:2013/api/auth/customer/1/books');
+            const myJson = await response.json(); //extract JSON from the http response
+            return myJson;
+        }
+
+        function load() {
+            var count = 0;
+            var div = document.getElementById('all-books');
+            loadBooks()
+                .then((books) => {
+                    for (var i = 0; i < books.length; i++) {
+                        div.innerHTML += `
+                            <div class="col-lg-2 col-md-3 col-sm-4">
+                                    <div class="item">
+                                        <a href="product-single.html" onclick="setIDBookCache('${books[count].id}')"><img class="product-image" src="${books[count].images}" alt="img" style="width:100%;">
+                                            <h3 class="product-title">'${books[count].title}'</h3>
+                                        </a>
+                                        <h6>Price: <span class="product-price">${books[count].price}</span></h6>
+                                        <button class="btn btn-add-to-cart" id="a" onclick='noticeAddItem()'>Add to Cart</button>
+                                    </div>
+                                </div>
+                            `
+                        count = count + 1;
+                    }
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
+        }
+
+        function setIDBookCache(id){
+            setCache('id',id);
+            console.log('id: ',id);
+        }
+
+        function getCache(key) {
+            console.log(localStorage.getItem(key))
+            return localStorage.getItem(key)
+        }
+        function deleteCache(key) {
+            localStorage.removeItem(key)
+            return true
+        }
+
+        function setCache(key, value) {
+            localStorage.setItem(key, value)
+            return true
+        }
+
+
+        window.onload = load;
+
+
+    </script>
 </head>
 
 <body>
@@ -208,21 +268,14 @@
                 <hr>
             </div>
             <div class="row" id="all-books">
-                <div class="col-lg-2 col-md-3 col-sm-4">
-                    <div class="item">
-                        <a href="product-single.html"><img class="product-image" src="images/r1.jpg" alt="img">
-                            <h3 class="product-title">harry Potter</h3>
-                        </a>
-                        <h6>Price: <span class="product-price">$19</span></h6>
-                        <button class="btn btn-add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
+                <!-- Load books-->
             </div>
-            <div class="btn-sec">
-                <button onclick="load()" class="btn gray-btn">view all books</button>
-            </div>
+            <!-- <div class="btn-sec">
+                <button class="btn gray-btn">view all books</button>
+            </div> -->
         </div>
     </section>
+    <hr>
     <section class="features-sec">
         <div class="container">
             <ul>
@@ -325,7 +378,7 @@
             </div>
         </div>
     </footer>
-    <script src="js/loadBook.js"></script>
+    <!-- <script src="js/loadBook.js"></script> -->
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/owl.carousel.min.js"></script>
