@@ -34,7 +34,7 @@
                             <div class="col-lg-2 col-md-3 col-sm-4">
                                     <div class="item">
                                         <a href="product-single.html" onclick="setIDBookCache('${books[count].id}')"><img class="product-image" src="${books[count].images}" alt="img" style="width:100%;">
-                                            <h3 class="product-title">'${books[count].title}'</h3>
+                                            <h3 class="product-title">${books[count].title}</h3>
                                         </a>
                                         <h6>Price: <span class="product-price">${books[count].price}</span></h6>
                                         <button class="btn btn-add-to-cart" id="a" onclick='noticeAddItem()'>Add to Cart</button>
@@ -140,7 +140,6 @@
                             <span>
                                 <a href="shopping-cart.html" class="nav-link">
                                     <i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
-                            <span class="quntity">3</span>
                         </div>
                         <form class="form-inline my-2 my-lg-0">
                             <input class="form-control mr-sm-2" type="search" placeholder="Search here..."
@@ -274,6 +273,7 @@
     <script src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/owl.carousel.min.js"></script>
     <script src="js/custom.js"></script>
+    <script src="js/checkout.js"></script>
 </body>
 
 </html>

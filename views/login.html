@@ -96,7 +96,6 @@
                             <span>
                                 <a href="shopping-cart.html" class="nav-link">
                                 <i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
-                            <span class="quntity">3</span>
                         </div>
                         <form class="form-inline my-2 my-lg-0">
                             <input class="form-control mr-sm-2" type="search" placeholder="Search here..." aria-label="Search">
@@ -118,7 +117,7 @@
             <h1>My Account / Login</h1>
             <p>Please enter your account below to start shopping.</p>
             <div class="form">
-                <form>
+                <form name="login" onsubmit="return validateForm();" method="post">
                     <div class="row">
                         <div class="col-md-6">
                             <input type="text" id="txtEmail" name="txtEmail" autofocus placeholder="Enter Your Email" required>
@@ -129,7 +128,7 @@
                             <span class="required-star">*</span>
                         </div>
                         <div class="col-lg-8 col-md-12">
-                            <button id="btnLogin" class="btn black" type="submit" onclick="doLogin()">Login</button>
+                            <button id="btnLogin" class="btn black" type="submit" onclick="validate()">Login</button>
                             <h5>not Registered? <a href="register.html">Register here</a></h5>
                         </div>
                     </div>
@@ -219,6 +218,50 @@
         </div>
     </footer>
     <!-- <script src="js/passport.js"></script> -->
+    <script>
+        var count = 2;
+        function validate()
+        {
+            var e = document.login.txtEmail.value;
+            var p = document.login.txtPassword.value;
+            var valid = false;
+            var usernameArray = ["a@gmail.com", "tin@gmail.com"];
+            var passwordArray = ["123123", "123123"];
+            for (var i = 0; i < usernameArray.length; i++)
+            {
+                if ((e == usernameArray[i]) && (p == passwordArray[i]))
+                {
+                    valid = true;
+                    break;
+                }
+            }
+            if (valid)
+            {
+                alert("Login was successful");
+                // window.location = "www.google.ie";
+                return false;
+            }
+            var again = " tries";
+            if (count == 1)
+            {
+                again = " try"
+            }
+            if (count >= 1)
+            {
+                alert("Wrong password or email")
+                count--;
+            }
+            else
+            {
+                alert("Incorrect password or username you are now blocked");
+                document.login.txtEmail.value = "You are now Blocked";
+                document.login.txtPassword.value = "Fool you can't see this";
+                document.login.txtEmail.disabled = true;
+                document.login.txtPassword.disabled = true;
+                return false;
+            }
+        }
+    </script>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/owl.carousel.min.js"></script>

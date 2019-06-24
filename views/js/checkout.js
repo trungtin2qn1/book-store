@@ -8,7 +8,6 @@ else
 
 function ready(){
 	var removeItemsCartBtn = document.getElementsByClassName('btn-danger');
-	console.log(removeItemsCartBtn);
 	for (var i = 0; i < removeItemsCartBtn.length ; i ++) {
 		var btn = removeItemsCartBtn[i];
 		btn.addEventListener('click', removeCartItem)
@@ -30,12 +29,12 @@ function ready(){
 
 function addCartItemClicked(event){
 	var btnClicked = event.target;
-	var pItems = btnClicked.parentElement.parentElement;
-	var pro_title = pItems.getElementsByClassName('product-title')[0].innerText;
-	var pro_price = pItems.getElementsByClassName('product-price')[0].innerText;
-	var pro_img =  pItems.getElementsByClassName('product-image')[0].src;
-	console.log(pro_title, pro_price, pro_img);
-	addItemToCart(pro_title,pro_price, pro_img);
+	var proItems = btnClicked.parentElement.parentElement;
+	var pro_title = proItems.getElementsByClassName('product-title')[0].innerText;
+	var pro_price = proItems.getElementsByClassName('product-price')[0].innerText;
+	// var pro_img =  pItems.getElementsByClassName('product-image')[0].src;
+	console.log(pro_title, pro_price);
+	// addItemToCart(pro_title,pro_price, pro_img);
 }
 
 function addItemToCart(title,price,imgsrc){

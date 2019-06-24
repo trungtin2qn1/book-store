@@ -61,7 +61,6 @@
                             <span>
                                 <a href="shopping-cart.html" class="nav-link">
                                     <i class="fa fa-shopping-cart" aria-hidden="true"></i></a></span>
-                            <span class="quntity">3</span>
                         </div>
                         <form class="form-inline my-2 my-lg-0">
                             <input class="form-control mr-sm-2" type="search" placeholder="Search here..." aria-label="Search">
@@ -145,7 +144,7 @@
                             </div>
                         </div>
                         <input type="button" value="Preview Bill" class="btn blue-btn" style="width: 50%;" data-toggle="modal" data-target="#PreviewBill">
-                        <input type="submit" value="Pay" class="btn" style="width: 50%;">
+                        <input type="submit" value="Pay" class="btn" onclick="ConfirmOrder()" style="width: 50%;">
                     </div>
                     <!-- row-->
                 </form>
@@ -247,11 +246,11 @@
                         <div class="col-md-6">
                             <address>
                                 <strong>Customer:</strong><br>
-                                John M.Doe<br>
-                                542 W. 15th Street<br>
-                                New York<br>
+                                Nguyen Van A<br>
+                                123 Nguyen Van Cu,<br>
+                                Ho Chi Minh<br>
                                 <strong>Phone number:</strong><br>
-                                0124902721
+                                0123456789
                             </address>
                         </div>
                         <div class="col-md-6">
@@ -261,7 +260,7 @@
                             </address>
                             <address>
                                 <strong>Order Date:</strong><br>
-                                June 7, 2019<br><br>
+                                June 24, 2019<br><br>
                             </address>
                         </div>
                     </div>
@@ -279,42 +278,29 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Product 1</td>
+                                        <td>7-Day Self Publishing Mini Course</td>
                                         <td>1</td>
-                                        <td>1.99$</td>
-                                        <td>1.99$</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Product 2</td>
-                                        <td>1</td>
-                                        <td>2.99$</td>
-                                        <td>2.99$</td>
+                                        <td>$11</td>
+                                        <td>$11</td>
                                     </tr>
                                     <tr>
                                         <td class="thick-line"></td>
                                         <td class="thick-line"></td>
                                         <td class="thick-line text-center"><strong>Subtotal</strong></td>
-                                        <td class="thick-line">4.98$</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="no-line"></td>
-                                        <td class="no-line"></td>
-                                        <td class="no-line text-center"><strong>VAT</strong></td>
-                                        <td class="no-line">10%</td>
+                                        <td class="thick-line">$11</td>
                                     </tr>
                                     <tr>
                                         <td class="no-line"></td>
                                         <td class="no-line"></td>
                                         <td class="no-line text-center"><strong>Total</strong></td>
-                                        <td class="no-line">4.72$</td>
+                                        <td class="no-line">$11</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" onclick="confirmForm();">Confirm</button>
-                        <a href="list-orders.html" type="button" class="btn blue-btn">My Orders</a>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Confirm</button>
                     </div>
                 </div>
             </div>
